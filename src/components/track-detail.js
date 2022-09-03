@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Link } from '@reach/router';
 import {
   colors,
   Button,
@@ -9,7 +10,6 @@ import {
   IconBook,
 } from '../styles';
 import { humanReadableTimeFromSeconds } from '../utils/helpers';
-import { Link } from '@reach/router';
 import ContentSection from './content-section';
 import MarkDown from './md-content';
 
@@ -18,8 +18,10 @@ import MarkDown from './md-content';
  * author, length, number of views, modules list, among other things.
  * It provides access to the first module of the track.
  */
-const TrackDetail = ({ track }) => {
-  const { title, description, thumbnail, author, length, modulesCount, modules, numberOfViews } = track;
+function TrackDetail({ track }) {
+  const {
+    title, description, thumbnail, author, durationInSeconds, modulesCount, modules, numberOfViews,
+  } = track;
 
   return (
     <ContentSection>
@@ -33,15 +35,23 @@ const TrackDetail = ({ track }) => {
             <h4>Track details</h4>
             <IconAndLabel>
               <IconView width="16px" />
-              <div id="viewCount">{numberOfViews} view(s)</div>
+              <div id="viewCount">
+                {numberOfViews}
+                {' '}
+                view(s)
+              </div>
             </IconAndLabel>
             <IconAndLabel>
               <IconBook width="14px" height="14px" />
-              <div>{modulesCount} modules</div>
+              <div>
+                {modulesCount}
+                {' '}
+                modules
+              </div>
             </IconAndLabel>
             <IconAndLabel>
               <IconTime width="14px" />
-              <div>{humanReadableTimeFromSeconds(length)}</div>
+              <div>{humanReadableTimeFromSeconds(durationInSeconds)}</div>
             </IconAndLabel>
           </DetailItem>
           <DetailItem>
@@ -50,7 +60,7 @@ const TrackDetail = ({ track }) => {
             <AuthorName>{author.name}</AuthorName>
           </DetailItem>
           <div>
-            <StyledLink to={`./module/${modules[0]['id']}`}>
+            <StyledLink to={`./module/${modules[0].id}`}>
               <Button
                 icon={<IconRun width="20px" />}
                 color={colors.pink.base}
@@ -68,7 +78,7 @@ const TrackDetail = ({ track }) => {
               {modules.map((module) => (
                 <li key={module.title}>
                   <div>{module.title}</div>
-                  <ModuleLength>{humanReadableTimeFromSeconds(module.length)}</ModuleLength>
+                  <ModuleLength>{humanReadableTimeFromSeconds(module.durationInSeconds)}</ModuleLength>
                 </li>
               ))}
             </ul>
@@ -78,7 +88,7 @@ const TrackDetail = ({ track }) => {
       <MarkDown content={description} />
     </ContentSection>
   );
-};
+}
 
 export default TrackDetail;
 

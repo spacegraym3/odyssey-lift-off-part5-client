@@ -1,37 +1,9 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { colors, widths } from '../styles';
 import styled from '@emotion/styled';
 import { Link } from '@reach/router';
+import { colors, widths } from '../styles';
 import logo from '../assets/space_cat_logo.png';
-
-/**
- * Header renders the top navigation
- * for this particular tutorial level, it only holds the home button
- */
-const Header = ({ children }) => {
-  return (
-    <HeaderBar>
-      <Container>
-        <HomeButtonContainer>
-          <HomeLink to="/">
-            <HomeButton>
-              <LogoContainer>
-                <Logo src={logo} />
-              </LogoContainer>
-              <Title>
-                <h3>Catstronaut</h3>
-                <div>Kitty space academy</div>
-              </Title>
-            </HomeButton>
-          </HomeLink>
-        </HomeButtonContainer>
-        {children}
-      </Container>
-    </HeaderBar>
-  );
-};
-
-export default Header;
 
 /** Header styled components */
 const HeaderBar = styled.div({
@@ -90,3 +62,31 @@ const Title = styled.div({
     paddingLeft: 2,
   },
 });
+/**
+ * Header renders the top navigation
+ * for this particular tutorial level, it only holds the home button
+ */
+function Header({ children }) {
+  return (
+    <HeaderBar>
+      <Container>
+        <HomeButtonContainer>
+          <HomeLink to="/">
+            <HomeButton>
+              <LogoContainer>
+                <Logo src={logo} />
+              </LogoContainer>
+              <Title>
+                <h3>Catstronaut</h3>
+                <div>Kitty space academy</div>
+              </Title>
+            </HomeButton>
+          </HomeLink>
+        </HomeButtonContainer>
+        {children}
+      </Container>
+    </HeaderBar>
+  );
+}
+
+export default Header;

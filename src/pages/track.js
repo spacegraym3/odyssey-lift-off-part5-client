@@ -15,13 +15,13 @@ const GET_TRACK = gql`
         photo
       }
       thumbnail
-      length
+      durationInSeconds
       modulesCount
       numberOfViews
       modules {
         id
         title
-        length
+        durationInSeconds
       }
       description
     }
@@ -32,7 +32,7 @@ const GET_TRACK = gql`
  * Track Page fetches a track's data from the gql query GET_TRACK
  * and provides it to the TrackDetail component to display
  */
-const Track = ({ trackId }) => {
+function Track({ trackId }) {
   const { loading, error, data } = useQuery(GET_TRACK, {
     variables: { trackId },
   });
@@ -44,6 +44,6 @@ const Track = ({ trackId }) => {
       </QueryResult>
     </Layout>
   );
-};
+}
 
 export default Track;

@@ -1,25 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { Header, Footer } from '../components';
 import styled from '@emotion/styled';
+import { Header, Footer } from '.';
 import { widths, unit } from '../styles';
-
-/**
- * Layout renders the full page content:
- * with header, Page container and footer
- */
-const Layout = ({ fullWidth, children, grid }) => {
-  return (
-    <>
-      <Header />
-      <PageContainer fullWidth={fullWidth} grid={grid}>
-        {children}
-      </PageContainer>
-      <Footer />
-    </>
-  );
-};
-
-export default Layout;
 
 /** Layout styled components */
 const PageContainer = styled.div((props) => ({
@@ -34,3 +17,21 @@ const PageContainer = styled.div((props) => ({
   padding: props.fullWidth ? 0 : unit * 2,
   paddingBottom: unit * 5,
 }));
+
+/**
+ * Layout renders the full page content:
+ * with header, Page container and footer
+ */
+function Layout({ fullWidth, children, grid }) {
+  return (
+    <>
+      <Header />
+      <PageContainer fullWidth={fullWidth} grid={grid}>
+        {children}
+      </PageContainer>
+      <Footer />
+    </>
+  );
+}
+
+export default Layout;

@@ -20,7 +20,7 @@ const GET_MODULE_AND_PARENT_TRACK = gql`
       modules {
         id
         title
-        length
+        durationInSeconds
       }
     }
   }
@@ -30,7 +30,7 @@ const GET_MODULE_AND_PARENT_TRACK = gql`
  * Module page fetches both parent track and module's data from the gql query GET_MODULE_AND_PARENT_TRACK
  * and feeds them to the ModuleDetail component
  */
-const Module = ({ moduleId, trackId }) => {
+function Module({ moduleId, trackId }) {
   const { loading, error, data } = useQuery(GET_MODULE_AND_PARENT_TRACK, {
     variables: { moduleId, trackId },
   });
@@ -42,6 +42,6 @@ const Module = ({ moduleId, trackId }) => {
       </QueryResult>
     </Layout>
   );
-};
+}
 
 export default Module;

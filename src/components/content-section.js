@@ -1,16 +1,7 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from '@emotion/styled';
 import { widths, colors } from '../styles';
-
-/**
- * Content Section component renders content (mainly text/mdown based)
- * for track and module details
- */
-const ContentSection = ({ children }) => {
-  return <ContentDiv>{children}</ContentDiv>;
-};
-
-export default ContentSection;
 
 /** ContentSection styled component */
 const ContentDiv = styled.div({
@@ -22,3 +13,13 @@ const ContentDiv = styled.div({
   alignSelf: 'center',
   backgroundColor: colors.background,
 });
+
+/**
+ * Content Section component renders content (mainly text/mdown based)
+ * for track and module details
+ */
+function ContentSection({ children }) {
+  return <ContentDiv>{children}</ContentDiv>;
+}
+
+export default ContentSection;

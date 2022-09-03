@@ -1,16 +1,9 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-children-prop */
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors } from '../styles';
 import ReactMarkdown from 'react-markdown';
-
-/**
- * Markdown component is a simple style wrapper for markdown content used across our app
- */
-const MarkDown = ({ content }) => {
-  return <StyledMarkdown children={content} />;
-};
-
-export default MarkDown;
+import { colors } from '../styles';
 
 /** Markdown styled components */
 const StyledMarkdown = styled(ReactMarkdown)({
@@ -38,3 +31,12 @@ const StyledMarkdown = styled(ReactMarkdown)({
     },
   },
 });
+
+/**
+ * Markdown component is a simple style wrapper for markdown content used across our app
+ */
+function MarkDown({ content }) {
+  return <StyledMarkdown children={content} />;
+}
+
+export default MarkDown;

@@ -10,7 +10,7 @@ const TRACKS = gql`
       id
       title
       thumbnail
-      length
+      durationInSeconds
       modulesCount
       author {
         name
@@ -24,7 +24,7 @@ const TRACKS = gql`
  * Tracks Page is the Catstronauts home page.
  * We display a grid of tracks fetched with useQuery with the TRACKS query
  */
-const Tracks = () => {
+function Tracks() {
   const { loading, error, data } = useQuery(TRACKS);
 
   return (
@@ -36,6 +36,6 @@ const Tracks = () => {
       </QueryResult>
     </Layout>
   );
-};
+}
 
 export default Tracks;
