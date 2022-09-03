@@ -5,7 +5,7 @@ import GlobalStyles from './styles';
 import Pages from './pages';
 
 const client = new ApolloClient({
-  uri: 'https://server-catstronauts.herokuapp.com/', // change this to YOUR server URI
+  uri: 'https://odyssey-part-5-turotial.herokuapp.com/', // change this to YOUR server URI
   cache: new InMemoryCache(),
   name: 'web',
   version: '1.0',
